@@ -34,26 +34,15 @@ editor:
 
 
 \listoftables
+The current poor status of several diadromous fish species—most notably the Atlantic salmon and the European eel—highlights the urgent need for effective management and scientifically robust assessment procedures. Achieving this requires high‑quality, coherent and accessible data, as conservation and management decisions can only be as reliable as the information on which they rely. Yet, despite the ecological and socio‑economic importance of these species, the data required to monitor their populations and pressures remain highly fragmented, scattered across institutions, stored in heterogeneous formats, and often maintained in locally developed systems. Such dispersion poses major limitations for transparency, reproducibility, long‑term maintenance, and ultimately for the provision of sound scientific advice.
+Atlantic salmon and European eel share life cycles that span both continental and marine ecosystems, inside and outside Europe. Although populations behave as relatively independent units in freshwater, they are biologically mixed during their marine phases, which requires coordination at regional and international scales for data collection, assessment, and management. Moreover, these species face multiple anthropogenic impacts—including fisheries, habitat degradation, and fragmentation caused by dams and hydropower plants—further emphasizing the need for robust and harmonized data systems. 
 
-Despite legal commitments for their conservation, the Atlantic salmon and the European eel are currently endangered. This is partly due to their ecological characteristics. First, the two species share their life cycle between marine and continental ecosystems, in and outside Europe. Despite behaving like independent units during their continental phase, they are biologically mixed during their marine phases, requiring to orchestrate regional and international management and assessment process (data collection and availability, use of appropriate assessment methods). Moreover, the species are submitted to many human impacts (e.g. fisheries, habitat degradation and fragmentation). In this context, building on pre-existing road maps, DIASPARA aims to provide tools to enhance the coherence of the scientific assessment process from data collection to assessment, with the final objective of supporting more holistic advice and to better inform a regional management. In the second work package, DIASPARA has done an inventory of available data and made recommendations for potential improvement in the collection, based on a spatiotemporal analysis of key biological parameters. In the database work package (WP3 - this current WP), DIASPARA aimed to develop database structures in order to store data required for the assessment. This was created to include biological data and fisheries data, but also data to monitor the impact of dams and hydropower plants. 
+In this context, ICES plays a central role in providing independent, high‑quality scientific advice for fisheries management, coordinating international expert groups that evaluate stock status and develop methodologies to support evidence‑based decision making. However, current ICES working groups—WGEEL, WGNAS and WGBAST—rely on locally maintained, heterogeneous databases and spreadsheets, an approach that hampers operability, transparency and long‑term sustainability, and is incompatible with the future Transparent Assessment Framework (TAF) aspirations (an ICES methodology and platform developed by to ensure that scientific assessments of fishery resources are fully transparent, reproducible, and auditable).To address these challenges, DIASPARA has developed the DIASPARA Fish Stock Database (StockDB), a new standardized and centralized database designed to support the assessment of diadromous fish species. StockDB consolidates biological data, fisheries information, habitat descriptors, and impact metrics (including dam‑related pressures), integrating datasets from legacy ICES databases. 
 
-Currently, both ICES WGEEL (Working group on eel) and WGNAS (Working group on North Atlantic Salmon) have developed “home-made” databases stored in local institutions, alongside interactive applications to explore and integrate the data. WGBAST (Working group on the Baltic Atlantic Salmon and Sea Trout) relies on a very extensive set of tables collated in excel worksheets to run various models. These approaches are far from optimal in terms of operability, data availability, data security, long-term maintenance and transparency. Moving towards a transparent assessment framework (TAF) requires simpler and more transparent ways of querying several central databases to get the raw data and do the assessment. The objective of this WP is to create database structures to store data to feed models that are currently in use, as well as data that will be useful in the future to support a holistic and transparent assessment. 
+To do so, the databases and working procedures of three ICES expert groups related to diadromous species were analyzed: WGNAS, WGBAST and WGTRUTTA. These analyses, carried out after contacting and holding meetings with the experts involved in these groups, resulted in three dedicated reports:[WGNAS](https://diaspara.bordeaux-aquitaine.inrae.fr/deliverables/wp3/p4/rep1.html), [WGBAST](https://diaspara.bordeaux-aquitaine.inrae.fr/deliverables/wp3/p5/rep2.html), [WGTRUTTA](https://diaspara.bordeaux-aquitaine.inrae.fr/deliverables/wp3/p6/rep3.html). An analysis of the WGEEL database was not required, as the leaders of this work package have been directly involved in its development and maintenance, and therefore already have an in‑depth understanding of its structure and functioning.
 
-The first part of the work has been to exchange with the different working groups 
-and analyze the content of their databases as well as their working processes.
-
-The reports are available for [WGNAS](https://diaspara.bordeaux-aquitaine.inrae.fr/deliverables/wp3/p4/rep1.html), [WGBAST](https://diaspara.bordeaux-aquitaine.inrae.fr/deliverables/wp3/p5/rep2.html), [WGTRUTTA](https://diaspara.bordeaux-aquitaine.inrae.fr/deliverables/wp3/p6/rep3.html). 
-WGEEL database was largely developed by the leaders of this work package, and was not 
-described.
-
-The second part consisted of finding a database structure suiting the needs of all expert 
-groups. The main structure of the database has been proposed during the online
-DIASPARA meeting : [database
-structure](https://projets_eabx.pages.mia.inra.fr/diaspara/fr/deliverables/wp3/p2/diaspara_WP3_Tuesday_presentation.html#/section-1).
-
-This structure allows to store the data necessary to run the
-international stock models for the different working groups giving advice or scientific reports
-on diadromous fishes. The structure is similar to both the WGEEL and the WGNAS databases. 
+The second phase consisted of finding a database structure suiting the needs of all expert groups. The main structure of the database was presented and discussed, including potential improvements, during an online
+DIASPARA meeting : [database structure](https://projets_eabx.pages.mia.inra.fr/diaspara/fr/deliverables/wp3/p2/diaspara_WP3_Tuesday_presentation.html#/section-1). This structure enables the efficient storage, harmonisation and retrieval of the data needed to run international stock assessment models used by the working groups responsible for producing advice or scientific reports on diadromous species. Its design builds on, and remains consistent with, the architectures previously developed for the WGEEL and WGNAS databases.
 
 The third part consisted in creating referential tables for the
 different types {>>define types<<} proposed, and then populates the database with the
@@ -61,23 +50,16 @@ contents of the WGEEL and WGNAS database. All chunks have been run
 sequentially to create the database, but some are later marked with eval =
 FALSE to speed up the process of running the quarto document {>>remove the last part: we provide a finalized report, so we don't need eval at all<<}.
 
-Finally the fourth part consisted in importing data in the stock database and in 
-creating a structure working for all the working groups {>>I don't see the difference with part 2: " finding a database structure suiting the needs of all expert 
-groups"<<}.
+Finally, the fourth phase focused on importing data into the stock database and ensuring that the resulting structure was fully operational and usable across all working groups, thereby complementing the earlier work of designing the database structure by validating it with real datasets and practical workflows.{>>I don't see the difference with part 2: " finding a database structure suiting the needs of all expert 
+groups"<<}. {>>I have changed it, this is my interpretation... of what changes...<<}.
 
-The diadromous fish database is in fact made of two main structures.
-The first is called ***Stock Database*** and holds values aggregated at the
-scale of the assessment unit, or stock unit. The second is the ***Metric Database*** 
-and allows to have time series of data, group and individual metrics to store life
-history traits data. The report for the metric can found [here]([https://diaspara.bordeaux-aquitaine.inrae.fr/deliverables/wp3/p11metric/rep11.html).
+The diadromous fish database includes two main components.The first is the  ***Stock Database*** which holds values aggregated at the scale of the assessment unit, or stock unit. The second is the ***Metric Database*** 
+which stores time series of data, group and individual metrics to store life history traits data. The report for the metric can found [here]([https://diaspara.bordeaux-aquitaine.inrae.fr/deliverables/wp3/p11metric/rep11.html).
 {>>the more I think about it, the more I find this distinction missleading: should we really
 make this separation. Wouldn't that be easier to say that the database aims to store raw data (biometry,
 time series of abundance), preprocessed data used by model (e.g. landings at various scales, biomass at various scales), model parameters and model outputs<<}.
 
-
-
-This habitat {>>database<<?} used to support both structures has been created using
-a hierarchical structure of the habitat of the migratory fishes (see [habitat report]()).
+To support both structures an habitat database  has been created using a hierarchical structure of the habitat of the migratory fishes (see [habitat report]()).
 The script to create this report can be found in diaspara github [code of the report](https://github.com/DIASPARAproject/WP3_migdb/blob/main/R/stockdb.qmd), the SQL codes are found in the following link
  [SQL code](https://github.com/DIASPARAproject/WP3_migdb/tree/main/SQL).
 
