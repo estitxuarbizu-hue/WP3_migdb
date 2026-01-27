@@ -83,53 +83,33 @@ The script to create this report can be found in diaspara github [code of the re
 
 # Hierarchical structure of the database {#sec-hierarchical}
 
-The database starts with the simplest structure, with a basic table
-corresponding to all data. Then three tables are created, one per
-Working group.  Since SQL server does not handle inheritance, once the table built, some of
-those will have to be replaced with views or partitioned views. {>>I don't understand this paragraph<<}
+The database construction starts with a simple core table that contains all common fields shared across datasets. From this starting point, three additiona tables,
+one per ICES Wworking group, are created to include group -specific data.  Since SQL server used in ICES does not support inheritance, these group-specific tables cannot automatically inherit the fields of the core table. Instead, equivalent functionality is achieved by using views that combine or reorganise the underlying tables, ensuring that users can still query the data in a consistent and unified way.
+. {>>I don't understand this paragraph<<} {>>my neither, I  have changed to what I understand taking into account next paragraph, but not sure this is right...<<}
 
 ::: {.callout-note appearance="simple"}
 <h3>Code for SQL Server </h3>
-SQL server used by ICES does not use inheritance, the same structure (schema)
-can be followed and the mother table will correspond to a view either as a UNION or
-JOIN of the tables
+SQL server used by ICES does not support inheritance between tables. However  the same database structure (schema) can be implemented by creating a view that acts as the “mother” table, built using a UNION or JOIN of the group‑specific tables. This ensures that all data remain accessible in a coherent and standardised format, even without formal inheritance.
 :::
 
 ## Referential tables
 Referentials tables aim to define dictionaries of data, ensuring data consistency
-and validity among different tables.
+and validity across all other tables in the database.
 
-Referential tables are created with a mother table from
-which specific (or WG-specific) tables inherit. All mother referential tables
-will be held in a schema called `ref`. Having working-group-specific
-tables makes setting consistent foreign key easier. For
-instance, WGEEL references different stages than WGNAS. Most of these referential 
-tables are common between species, and whenever possible, they are sourced from 
-ICES vocabulary {>>make a reference to ICES vocab webpage, and perhaps explain that ICES vocab
+To achieve this, referential tables are first created with a mother table from
+which specific (or WG-specific) tables inherit and acts as the common source for all definitions. All mother referential tables will be held in a schema called `ref`{>>I do not undertand this ref thing<<}. Having working-group-specific
+tables makes setting consistent foreign key easier. From these central tables, specific versions can be created for each ICES working group when needed, for
+instance, WGEEL references different stages than WGNAS. This approach simplifies the management of foreign keys and helps maintain a coherent structure across groups.
+Most of these referential tables are common between species, and whenever possible,  their content is aligned with  ICES vocabulary {>>make a reference to ICES vocab webpage, and perhaps explain that ICES vocab
 is more or less equivalent to ICES referentials<<}.
 
 ## Unicity constraints
-In relational databases, unicity constraints aim to avoid storing duplicate data.
-Another important point to add is
-unique constraint. As some values would be null, creating unique
-constraints with indexes would be necessary. {>>I don't understand those two first sentences<<}
-These allow to have
-different levels of constraints for instance the unique constraint would be
-defined for : (`year, age, area, parameter`) (`year, age, parameter`)
-(`year, area, parameter`) (`year, parameter`). 
-Age is used by WGNAS and WGBAST but not WGEEL, and WGBAST has two additional 
-fields not found in the other databases: period (month, half of year, ...),
-with the value and the estimation method.
-Using different structures in the inherited table is a way to deal with the differences
-between working groups while keeping most of the structure common.
-
-In WGNAS because of the presence of matrix (area x area)
-the area might appear twice, this will be dealt with the use of
-an additional column (both for WGBAST and WGNAS). There might be a
-need for a trigger to check the unicity
- (`year, area, area, parameter`)
+In relational databases, it is important to prevent the same piece of information from being stored more than once, unicity constraints aim to avoid storing duplicate data.
+In some cases, the database needs to ensure that a specific combination of values appears only once, so that no duplicated records are created. To guarantee this, the database applies rules that check the uniqueness of each record. For example, a dataset may only allow one entry per combination of year, area and parameter, or year, age and parameter.
+Because each ICES working group uses slightly different variables —for instance, WGNAS and WGBAST use age, while WGEEL does not, and WGBAST includes additional fields such as the period (month, half‑year), the value and the estimation method— we define different uniqueness rules depending on the variables used by each group. This allows us to adapt to their specific data structures while keeping most of the database design shared and consistent.
+In the case of WGNAS, the presence of matrices (area × area) means that the area field may appear twice for a single record. To avoid confusion and ensure that these records remain unique, an additional column is added, and if needed, a database trigger can be used to automatically check that each combination of values is not entered more than once.
  
-{>>this section is hard to follow<<}
+{>>this section is hard to follow<<} {>>I have created a new text after trying to find info to understand what Unicity constraints are... not sure I understood, please check<<}
 
 ## Creating the diaspara database
 
